@@ -1,22 +1,29 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 
-function NavBar() {
+const Navbar = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="primary" sx={{ mb: 4 }}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold" }}>
           ChatifyPro
         </Typography>
-        <Button color="inherit" component={Link} to="/">Home</Button>
-        <Button color="inherit" component={Link} to="/login">Login</Button>
-        <Button color="inherit" component={Link} to="/register">Register</Button>
-        <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
+        <Button color="inherit" href="/home" sx={{ mx: 1, "&:hover": { textDecoration: "underline" } }}>
+          Home
+        </Button>
+        <Button color="inherit" href="/login" sx={{ mx: 1, "&:hover": { textDecoration: "underline" } }}>
+          Login
+        </Button>
+        <Button color="inherit" href="/register" sx={{ mx: 1, "&:hover": { textDecoration: "underline" } }}>
+          Register
+        </Button>
+        <Button color="inherit" href="/dashboard" sx={{ mx: 1, "&:hover": { textDecoration: "underline" } }}>
+          Dashboard
+        </Button>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
-export default NavBar;
+export default Navbar;
 
