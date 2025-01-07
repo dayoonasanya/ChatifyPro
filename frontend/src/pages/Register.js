@@ -10,6 +10,7 @@ import {
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
+// Validation Schema
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Full Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -36,7 +37,7 @@ const Register = () => {
           initialValues={{ name: "", email: "", password: "" }}
           validationSchema={RegisterSchema}
           onSubmit={(values) => {
-            console.log("Form Values:", values);
+            console.log("Form Submitted: ", values);
           }}
         >
           {({
