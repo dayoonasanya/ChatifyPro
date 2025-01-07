@@ -1,56 +1,56 @@
-import React from 'react';
-import { Container, Typography, Button, Grid, Card, CardContent, CardActions } from '@mui/material';
+import React from "react";
+import { Grid, Card, CardContent, Typography, Button, CardActions, Container } from "@mui/material";
 
-const mockChatbots = [
-  { id: 1, name: 'Support Bot', description: 'Handles customer support inquiries.' },
-  { id: 2, name: 'Sales Bot', description: 'Assists with sales and product recommendations.' },
-  { id: 3, name: 'Feedback Bot', description: 'Collects user feedback and reviews.' },
-];
-
-function Dashboard() {
-  const handleCreateChatbot = () => {
-    console.log('Create Chatbot clicked');
-  };
-
-  const handleEdit = (id) => {
-    console.log(`Edit Chatbot with ID: ${id}`);
-  };
-
-  const handleDelete = (id) => {
-    console.log(`Delete Chatbot with ID: ${id}`);
-  };
+const Dashboard = () => {
+  const bots = [
+    { name: "Support Bot", description: "Handles customer support inquiries." },
+    { name: "Sales Bot", description: "Assists with sales and product recommendations." },
+    { name: "Feedback Bot", description: "Collects user feedback and reviews." },
+  ];
 
   return (
-    <Container sx={{ mt: 4 }}>
-      {/* Header Section */}
-      <Typography variant="h4" gutterBottom>
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      <Typography variant="h4" align="center" gutterBottom>
         Dashboard
       </Typography>
       <Button
         variant="contained"
         color="primary"
-        sx={{ mb: 4 }}
-        onClick={handleCreateChatbot}
+        sx={{
+          display: "block",
+          margin: "20px auto",
+          padding: "10px 20px",
+          fontSize: "16px",
+        }}
       >
         Create Chatbot
       </Button>
-
-      {/* Chatbot List */}
-      <Grid container spacing={3}>
-        {mockChatbots.map((chatbot) => (
-          <Grid item xs={12} sm={6} md={4} key={chatbot.id}>
-            <Card>
+      <Grid container spacing={4}>
+        {bots.map((bot, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Card
+              sx={{
+                boxShadow: 3,
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: 6,
+                },
+              }}
+            >
               <CardContent>
-                <Typography variant="h6">{chatbot.name}</Typography>
+                <Typography variant="h5" component="div">
+                  {bot.name}
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {chatbot.description}
+                  {bot.description}
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" onClick={() => handleEdit(chatbot.id)}>
+                <Button size="small" color="primary">
                   Edit
                 </Button>
-                <Button size="small" color="secondary" onClick={() => handleDelete(chatbot.id)}>
+                <Button size="small" color="secondary">
                   Delete
                 </Button>
               </CardActions>
@@ -60,7 +60,7 @@ function Dashboard() {
       </Grid>
     </Container>
   );
-}
+};
 
 export default Dashboard;
 
