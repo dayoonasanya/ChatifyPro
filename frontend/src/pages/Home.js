@@ -1,9 +1,12 @@
 import React from "react";
 import { Container, Box, Typography, Button, Grid } from "@mui/material";
+import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+import BuildIcon from "@mui/icons-material/Build";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const Home = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, px: 2 }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -12,7 +15,8 @@ const Home = () => {
           background: "linear-gradient(to right, #1976d2, #2196f3)",
           color: "white",
           borderRadius: "12px",
-          mb: 4,
+          mb: 6, // Margin bottom for spacing
+          animation: "fadeIn 1.5s ease-in-out",
         }}
       >
         <Typography variant="h2" gutterBottom>
@@ -21,26 +25,44 @@ const Home = () => {
         <Typography variant="h5" gutterBottom>
           Your AI-powered chatbot solution for modern businesses.
         </Typography>
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 2 }}>
           <Button
             variant="contained"
             color="secondary"
             size="large"
             href="/register"
-            sx={{ mx: 2 }}
+            sx={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              "&:hover": {
+                backgroundColor: "#d500f9",
+                transform: "scale(1.05)",
+                transition: "all 0.3s ease-in-out",
+              },
+            }}
           >
             Get Started
           </Button>
           <Button
             variant="outlined"
-            color="inherit"
             size="large"
             href="/learn-more"
             sx={{
-              mx: 2,
+              padding: "10px 20px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              textTransform: "uppercase",
               borderColor: "white",
               color: "white",
-              "&:hover": { background: "white", color: "#1976d2" },
+              "&:hover": {
+                backgroundColor: "white",
+                color: "#1976d2",
+                borderColor: "#1976d2",
+                transform: "scale(1.05)",
+                transition: "all 0.3s ease-in-out",
+              },
             }}
           >
             Learn More
@@ -62,8 +84,12 @@ const Home = () => {
               borderRadius: "8px",
               boxShadow: 2,
               "&:hover": { boxShadow: 4 },
+              height: "100%",
             }}
           >
+            <IntegrationInstructionsIcon
+              sx={{ fontSize: "50px", color: "#1976d2", mb: 2 }}
+            />
             <Typography variant="h6" gutterBottom>
               Easy Integration
             </Typography>
@@ -81,8 +107,10 @@ const Home = () => {
               borderRadius: "8px",
               boxShadow: 2,
               "&:hover": { boxShadow: 4 },
+              height: "100%",
             }}
           >
+            <BuildIcon sx={{ fontSize: "50px", color: "#1976d2", mb: 2 }} />
             <Typography variant="h6" gutterBottom>
               Customizable Chatbots
             </Typography>
@@ -100,8 +128,10 @@ const Home = () => {
               borderRadius: "8px",
               boxShadow: 2,
               "&:hover": { boxShadow: 4 },
+              height: "100%",
             }}
           >
+            <AccessTimeIcon sx={{ fontSize: "50px", color: "#1976d2", mb: 2 }} />
             <Typography variant="h6" gutterBottom>
               24/7 Availability
             </Typography>
