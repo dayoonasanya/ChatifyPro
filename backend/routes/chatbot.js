@@ -65,5 +65,42 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+// Duplicate a chatbot
+router.post('/:id/duplicate', authMiddleware, async (req, res) => {
+  try {
+    const chatbot = await Chatbot.findById(req.params.id);
+    if (!chatbot || chatbot.creator.toString() !== req.user.id) {
+      return res.status(404).json({ error: 'Chatbot not found' });
+    }
+
+    const newChatbot = await Chatbot.create({
+      name: `${chatbot.name} (Copy)`,
+      description: chatbot.description,
+      creator: req.user.id,
+    });
+
+    res.status(201).json({ message: 'Chatbot duplicated successfully', newChatbot });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Toggle chatbot activation status
+router.patch('/:id/toggle-status', authMiddleware, async (req, res) => {
+  try {
+    const chatbot = await Chatbot.findById(req.params.id);
+    if (!chatbot || chatbot.creator.toString() !== req.user.id) {
+      return res.status(404).json({ error: 'Chatbot not found' });
+    }
+
+    chatbot.status = chatbot.status === 'active' ? 'inactive' : 'active';
+    await chatbot.save();
+
+    res.status(200).json({ message: 'Chatbot status updated', chatbot });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
 
